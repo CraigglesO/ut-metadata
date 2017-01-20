@@ -1,14 +1,14 @@
 {
-  "name": "Typescript-Ready",
-  "version": "0.0.0",
+  "name": "ut-metadata",
+  "version": "0.6.1",
   "description": "description goes here",
-  "main": "index.js",
+  "main": "ut-metadata.js",
   "scripts": {
     "test": "echo 'Error: no test specified' && exit 1",
     "start": "npm run build:live",
-    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts"
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./ut-metadata.ts"
   },
-  "author": "",
+  "author": "Craig OConnor",
   "repository" : {
     "type" : "git",
     "url" : ""
