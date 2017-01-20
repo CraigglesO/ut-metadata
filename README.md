@@ -1,4 +1,11 @@
-# ut-metadata
+# ut-metadata [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
+
+[travis-image]: https://img.shields.io/travis/oconnorct1/ut-metadata/master.svg
+[travis-url]: https://travis-ci.org/oconnorct1/ut-metadata
+[npm-image]: https://img.shields.io/npm/v/ut-metadata.svg
+[npm-url]: https://npmjs.org/package/ut-metadata
+[downloads-image]: https://img.shields.io/npm/dm/ut-metadata.svg
+[downloads-url]: https://npmjs.org/package/ut-metadata
 
 ### Extension for Peers to Send Metadata Files (BEP 9)
 

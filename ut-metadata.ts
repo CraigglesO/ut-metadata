@@ -8,6 +8,7 @@ class utMetadata extends EventEmitter {
   metadata_size: number
   infoHash:      string
   piece_count:   number
+  next_piece:    number
   pieces:        Array<Buffer>
   constructor(metadata_size: number, infoHash: string) {
     super();
@@ -16,6 +17,7 @@ class utMetadata extends EventEmitter {
     self.metadata_size = metadata_size;
     self.infoHash      = infoHash;
     self.piece_count   = Math.ceil(metadata_size / PACKET_SIZE);
+    self.next_piece    = 0;
     self.pieces        = Array.apply(null, Array(self.piece_count));
   }
 
@@ -24,7 +26,7 @@ class utMetadata extends EventEmitter {
     let str          = payload.toString(),
         trailerIndex = str.indexOf('ee') + 2,
         dict         = bencode.decode(str.substring(6, trailerIndex)),
-        trailer      = payload.slice(trailerIndex)
+        trailer      = payload.slice(trailerIndex);
 
     switch(dict.msg_type) {
       case 0:
@@ -35,13 +37,12 @@ class utMetadata extends EventEmitter {
         if (dict.total_size > PACKET_SIZE)
           return;
         else {
-          self.piece_count--;
           self.pieces[dict.piece] = trailer;
 
-          if (!self.piece_count) {
-            // Emit finished hash:
-            this.emit('finished_metadata', Buffer.concat(self.pieces));
-          }
+          if ( ++self.next_piece === self.piece_count )
+            this.emit('finished_metadata', Buffer.concat(self.pieces)); // Emit finished hash:
+          else
+            this.emit('next', self.next_piece);
         }
         break;
       case 2:
@@ -81,4 +82,4 @@ function CanonicalPeerPriority () {
 
 }
 
-export { utMetadata }
+export { utMetadata, utPex }

@@ -8,13 +8,19 @@
 
 
 // const crc32 = require('fast-crc32c');
-var Sse4Crc32 = require("sse4_crc32");
-import { Buffer } from 'buffer';
-let one = Buffer.from([0x7b, 0xd5, 0x20, 0x0a]);
-let two = Buffer.from([0x62, 0x4c, 0x36, 0x20]);
+// var Sse4Crc32 = require("sse4_crc32");
+// import { Buffer } from 'buffer';
+// let one = Buffer.from([0x7b, 0xd5, 0x20, 0x0a]);
+// let two = Buffer.from([0x62, 0x4c, 0x36, 0x20]);
+//
+// var newCrc = Sse4Crc32.calculate(one);
+//
+// var lol = Sse4Crc32.calculate(two, newCrc);
+//
+// console.log(lol);
 
-var newCrc = Sse4Crc32.calculate(one);
+let x = 0;
 
-var lol = Sse4Crc32.calculate(two, newCrc);
-
-console.log(lol);
+if (++x === 1) {
+  console.log('yay');
+}

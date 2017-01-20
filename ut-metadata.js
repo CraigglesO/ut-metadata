@@ -9,6 +9,7 @@ class utMetadata extends events_1.EventEmitter {
         self.metadata_size = metadata_size;
         self.infoHash = infoHash;
         self.piece_count = Math.ceil(metadata_size / PACKET_SIZE);
+        self.next_piece = 0;
         self.pieces = Array.apply(null, Array(self.piece_count));
     }
     _message(payload) {
@@ -21,11 +22,11 @@ class utMetadata extends events_1.EventEmitter {
                 if (dict.total_size > PACKET_SIZE)
                     return;
                 else {
-                    self.piece_count--;
                     self.pieces[dict.piece] = trailer;
-                    if (!self.piece_count) {
+                    if (++self.next_piece === self.piece_count)
                         this.emit('finished_metadata', Buffer.concat(self.pieces));
-                    }
+                    else
+                        this.emit('next', self.next_piece);
                 }
                 break;
             case 2:
@@ -48,5 +49,6 @@ class utPex extends events_1.EventEmitter {
     removePeer() {
     }
 }
+exports.utPex = utPex;
 function CanonicalPeerPriority() {
 }
