@@ -19,8 +19,4 @@
 //
 // console.log(lol);
 
-let x = 0;
-
-if (++x === 1) {
-  console.log('yay');
-}
+import { utMetadata } from '../';
