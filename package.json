@@ -1,23 +1,30 @@
 {
   "name": "ut-metadata",
-  "version": "0.7.3",
-  "description": "description goes here",
+  "version": "0.8.0",
+  "description": "Metadata to and from bittorrent peers. BEP_0011",
   "main": "ut-metadata.js",
   "scripts": {
-    "test": "echo 'Error: no test specified' && exit 1",
+    "test": "mocha",
     "start": "npm run build:live",
+    "prepublish": "tsc index.ts --module commonjs ",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./ut-metadata.ts"
   },
   "author": "Craig OConnor",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/CraigglesO/ut-metadata.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CraigglesO/ut-metadata.git"
   },
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^7.0.0",
+    "mocha-typescript": "^1.0.15",
     "nodemon": "^1.11.0",
+    "standard": "*",
     "ts-node": "^2.0.0",
     "typescript": "^2.1.5"
+  },
+  "dependencies": {
+    "bencode": "^0.11.0",
+    "mocha": "^3.2.0"
   }
 }

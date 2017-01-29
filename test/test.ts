@@ -1,22 +1,22 @@
-// let x = Array.apply(null, Array(5));
-//
-// console.log(x);
-//
-// let y = Math.ceil(16484 / 16384);
-//
-// console.log(y);
+import { utMetadata } from '../ut-metadata';
+import * as fs from 'fs';
 
+let ut_metadata = new utMetadata(2095, '70e0a655a114040f061572b2c9965d70c43ee2f2');
 
-// const crc32 = require('fast-crc32c');
-// var Sse4Crc32 = require("sse4_crc32");
-// import { Buffer } from 'buffer';
-// let one = Buffer.from([0x7b, 0xd5, 0x20, 0x0a]);
-// let two = Buffer.from([0x62, 0x4c, 0x36, 0x20]);
-//
-// var newCrc = Sse4Crc32.calculate(one);
-//
-// var lol = Sse4Crc32.calculate(two, newCrc);
-//
-// console.log(lol);
+let f = fs.readFileSync('./results6.txt');
 
-import { utMetadata } from '../';
+let payload = f.slice(6);
+
+ut_metadata.on('next', (number) => {
+  console.log('shoot', number);
+})
+
+ut_metadata.on('metadata', (t) => {
+  console.log('t: ', t);
+})
+
+ut_metadata.on('test', () => {
+  console.log('test called')
+})
+
+ut_metadata._message(payload);
