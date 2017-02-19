@@ -1,5 +1,7 @@
 # ut-metadata [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/CraigglesO/ut-metadata.svg)](https://greenkeeper.io/)
+
 [travis-image]: https://img.shields.io/travis/CraigglesO/ut-metadata/master.svg
 [travis-url]: https://travis-ci.org/CraigglesO/ut-metadata
 [npm-image]: https://img.shields.io/npm/v/ut-metadata.svg
