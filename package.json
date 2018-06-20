@@ -20,7 +20,7 @@
     "mocha-typescript": "^1.0.15",
     "nodemon": "^1.11.0",
     "standard": "*",
-    "ts-node": "^3.0.1",
+    "ts-node": "^6.1.2",
     "typescript": "^2.1.5"
   },
   "dependencies": {
